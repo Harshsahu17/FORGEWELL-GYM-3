@@ -1,0 +1,179 @@
+{
+  "navbar": {
+    "logo": "FORGE",
+    "logoAccent": "WELL",
+    "logoImage": "/images/forgewell-logo.png",
+    "links": [
+      { "label": "Home", "href": "#home" },
+      { "label": "About", "href": "#about" },
+      { "label": "Services", "href": "#services" },
+      { "label": "Membership", "href": "#membership" },
+      { "label": "How It Works", "href": "#how-it-works" },
+      { "label": "Contact", "href": "#contact" }
+    ],
+    "cta": "Join Now"
+  },
+  "hero": {
+    "eyebrow": "Bhopal's Strength & Conditioning Studio",
+    "headlineTop": "BUILD THE BODY",
+    "headlineBottom": "THAT CARRIES YOU",
+    "description": "Coached strength training, conditioning, and recovery — programmed around your goals, not a generic template. Real coaches, real accountability, measurable results.",
+    "primaryCta": "Join Now",
+    "secondaryCta": "Explore Services",
+    "backgroundImage": "/images/hero.jpg",
+    "stats": [
+      { "value": "12+", "label": "Years Coaching" },
+      { "value": "2.4K", "label": "Members Trained" },
+      { "value": "40+", "label": "Weekly Classes" }
+    ]
+  },
+  "about": {
+    "eyebrow": "About Forgewell",
+    "heading": "Coaching first. Equipment second.",
+    "description": "Forgewell was built on a simple idea: a gym should make you measurably stronger, not just tired. Every member starts with a movement assessment, trains under certified coaches, and follows a program that adapts as they progress. No guesswork, no wasted reps.",
+    "image": "/images/about.jpg",
+    "stats": [
+      { "value": "12", "label": "Years of Experience" },
+      { "value": "2,400+", "label": "Happy Members" },
+      { "value": "18", "label": "Professional Trainers" }
+    ],
+    "cta": "Learn More"
+  },
+  "services": {
+    "eyebrow": "What We Offer",
+    "heading": "Programs built around outcomes",
+    "description": "Six coached disciplines. Pick one or combine them — your coach will structure the split.",
+    "items": [
+      {
+        "title": "Personal Training",
+        "description": "One-on-one programming with a dedicated coach tracking every lift, every week.",
+        "icon": "dumbbell"
+      },
+      {
+        "title": "Weight Training",
+        "description": "Progressive strength blocks for hypertrophy, powerlifting, or general performance.",
+        "icon": "barbell"
+      },
+      {
+        "title": "Cardio Training",
+        "description": "Interval and endurance protocols designed around your resting heart rate and goals.",
+        "icon": "heartbeat"
+      },
+      {
+        "title": "CrossFit",
+        "description": "High-intensity functional workouts scaled to every fitness level, coached in small groups.",
+        "icon": "flame"
+      },
+      {
+        "title": "Yoga",
+        "description": "Mobility and breathwork sessions that speed recovery and protect against injury.",
+        "icon": "leaf"
+      },
+      {
+        "title": "Nutrition Guidance",
+        "description": "Macro planning and meal strategy built around your training load, not fad diets.",
+        "icon": "apple"
+      }
+    ]
+  },
+  "membership": {
+    "eyebrow": "Membership",
+    "heading": "Plans for every stage",
+    "description": "Cancel or upgrade anytime. No lock-in contracts.",
+    "plans": [
+      {
+        "name": "Basic",
+        "price": "₹1,499",
+        "duration": "/ month",
+        "recommended": false,
+        "features": [
+          "Full gym floor access",
+          "Locker room access",
+          "2 group classes / week",
+          "App-based workout tracking"
+        ],
+        "cta": "Choose Basic"
+      },
+      {
+        "name": "Standard",
+        "price": "₹2,799",
+        "duration": "/ month",
+        "recommended": true,
+        "features": [
+          "Everything in Basic",
+          "Unlimited group classes",
+          "Monthly progress check-in",
+          "Nutrition guidance session",
+          "Guest passes x2 / month"
+        ],
+        "cta": "Choose Standard"
+      },
+      {
+        "name": "Premium",
+        "price": "₹4,999",
+        "duration": "/ month",
+        "recommended": false,
+        "features": [
+          "Everything in Standard",
+          "Weekly 1-on-1 personal training",
+          "Custom programming",
+          "Recovery suite access",
+          "Priority class booking"
+        ],
+        "cta": "Choose Premium"
+      }
+    ]
+  },
+  "howItWorks": {
+    "eyebrow": "How It Works",
+    "heading": "From sign-up to your first PR",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Choose Your Plan",
+        "description": "Pick the membership tier that matches how often you'll train and the support you need."
+      },
+      {
+        "number": "02",
+        "title": "Register",
+        "description": "Book a movement assessment so your coach understands your starting point and any limitations."
+      },
+      {
+        "number": "03",
+        "title": "Start Training",
+        "description": "Begin your first programmed block with a coach guiding form, load, and recovery."
+      },
+      {
+        "number": "04",
+        "title": "Achieve Your Goals",
+        "description": "Track measurable progress every month and adjust the program as you get stronger."
+      }
+    ]
+  },
+  "gallery": [
+    "/images/gallery-1.jpg",
+    "/images/gallery-2.jpg",
+    "/images/gallery-3.jpg",
+    "/images/gallery-4.jpg",
+    "/images/gallery-5.jpg",
+    "/images/gallery-6.jpg"
+  ],
+  "footer": {
+    "logo": "FORGE",
+    "logoAccent": "WELL",
+    "description": "A coached strength and conditioning studio in Bhopal, built for people who want measurable progress, not just a membership card.",
+    "quickLinks": [
+      { "label": "About", "href": "#about" },
+      { "label": "Services", "href": "#services" },
+      { "label": "Membership", "href": "#membership" },
+      { "label": "Contact", "href": "#contact" }
+    ],
+    "contact": {
+      "address": "14 MP Nagar, Zone II, Bhopal, MP 462011",
+      "phone": "+91 98765 43210",
+      "email": "hello@forgewell.fit"
+    },
+    "social": ["instagram", "facebook", "twitter", "youtube"],
+    "copyright": "© 2026 Forgewell. All rights reserved."
+  }
+}
