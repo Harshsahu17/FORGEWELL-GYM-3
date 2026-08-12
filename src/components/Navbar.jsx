@@ -18,7 +18,7 @@ export default function Navbar() {
   const handleLinkClick = () => setOpen(false)
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-[#0d0d0d] border-b border-border shadow-[0_14px_34px_-26px_rgba(255,90,0,0.75)] py-4">
+    <header className="fixed top-0 inset-x-0 z-50 bg-[#0d0d0d] border-b border-border shadow-[0_14px_34px_-26px_rgb(var(--shadow)/0.75)] py-4">
       <nav className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between">
         <a
           href="#home"

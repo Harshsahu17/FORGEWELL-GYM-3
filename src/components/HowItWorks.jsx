@@ -30,26 +30,21 @@ export default function HowItWorks() {
   return (
     <section id="how-it-works" className="bg-bg-secondary py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="sticky top-[5.5rem] z-20">
-          <div className="relative mx-auto pb-8">
-            <div className="sticky top-[5.5rem] z-20 flex flex-wrap items-center justify-end gap-2">
-              <button
-                onClick={() => window.dispatchEvent(new CustomEvent('forgewell:open-customizer', { detail: { key: 'howItWorks' } }))}
-                className="px-3 py-1 bg-[#222] text-sm rounded"
-              >
-                Customize
-              </button>
-              <button
-                onClick={() => saveSection('howItWorks', howItWorks)}
-                className="px-3 py-1 bg-accent text-bg-primary rounded text-sm font-semibold"
-              >
-                Save
-              </button>
-            </div>
-          </div>
+        <div className="sticky top-[5.5rem] z-20 mb-8 flex flex-wrap items-center justify-end gap-2">
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent('forgewell:open-customizer', { detail: { key: 'howItWorks' } }))}
+            className="px-3 py-1 bg-[#222] text-sm rounded"
+          >
+            Customize
+          </button>
+          <button
+            onClick={() => saveSection('howItWorks', howItWorks)}
+            className="px-3 py-1 bg-accent text-bg-primary rounded text-sm font-semibold"
+          >
+            Save
+          </button>
         </div>
-      </div>
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+
         <div className="max-w-2xl">
           <span className="text-accent font-mono text-xs sm:text-sm tracking-[0.25em] uppercase">
             {howItWorks.eyebrow}

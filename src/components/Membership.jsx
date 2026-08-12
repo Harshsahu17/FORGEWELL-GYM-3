@@ -8,7 +8,7 @@ function PlanCard({ plan }) {
     <div
       className={`relative flex flex-col rounded-sm p-8 transition-all duration-400 ease-in-out ${
         plan.recommended
-          ? 'bg-bg-card border-2 border-accent lg:-translate-y-4 shadow-[0_24px_50px_-24px_rgba(255,212,0,0.55)]'
+          ? 'bg-bg-card border-2 border-accent lg:-translate-y-4 shadow-[0_24px_50px_-24px_rgb(var(--shadow)/0.55)]'
           : 'bg-bg-card border border-border hover:border-accent/50 hover:-translate-y-2'
       }`}
     >
@@ -39,7 +39,7 @@ function PlanCard({ plan }) {
         href="#contact"
         className={`mt-9 text-center rounded-sm px-6 py-3.5 text-sm font-semibold uppercase tracking-wide transition-all duration-300 ${
           plan.recommended
-            ? 'bg-accent text-bg-primary hover:bg-accent-hover hover:-translate-y-0.5 hover:shadow-[0_10px_26px_-10px_rgba(255,212,0,0.75)]'
+            ? 'bg-accent text-bg-primary hover:bg-accent-hover hover:-translate-y-0.5 hover:shadow-[0_10px_26px_-10px_rgb(var(--shadow)/0.75)]'
             : 'border border-border text-ink-primary hover:border-accent hover:text-accent'
         }`}
       >
@@ -55,26 +55,21 @@ export default function Membership() {
   return (
     <section id="membership" className="bg-bg-secondary py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="sticky top-[5.5rem] z-20">
-          <div className="relative mx-auto pb-8">
-            <div className="sticky top-[5.5rem] z-20 flex flex-wrap items-center justify-end gap-2">
-              <button
-                onClick={() => window.dispatchEvent(new CustomEvent('forgewell:open-customizer', { detail: { key: 'membership' } }))}
-                className="px-3 py-1 bg-[#222] text-sm rounded"
-              >
-                Customize
-              </button>
-              <button
-                onClick={() => saveSection('membership', membership)}
-                className="px-3 py-1 bg-accent text-bg-primary rounded text-sm font-semibold"
-              >
-                Save
-              </button>
-            </div>
-          </div>
+        <div className="sticky top-[5.5rem] z-20 mb-8 flex flex-wrap items-center justify-end gap-2">
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent('forgewell:open-customizer', { detail: { key: 'membership' } }))}
+            className="px-3 py-1 bg-[#222] text-sm rounded"
+          >
+            Customize
+          </button>
+          <button
+            onClick={() => saveSection('membership', membership)}
+            className="px-3 py-1 bg-accent text-bg-primary rounded text-sm font-semibold"
+          >
+            Save
+          </button>
         </div>
-      </div>
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+
         <div className="max-w-2xl mx-auto text-center">
           <span className="text-accent font-mono text-xs sm:text-sm tracking-[0.25em] uppercase">
             {membership.eyebrow}

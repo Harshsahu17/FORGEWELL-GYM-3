@@ -69,7 +69,7 @@ export default function Hero() {
           >
             <a
               href="#membership"
-              className="group inline-flex items-center gap-2 rounded-sm bg-accent px-8 py-4 text-sm font-semibold uppercase tracking-wide text-bg-primary transition-all duration-300 hover:bg-accent-hover hover:-translate-y-1 hover:shadow-[0_12px_30px_-10px_rgba(255,212,0,0.75)] w-full sm:w-auto justify-center"
+              className="group inline-flex items-center gap-2 rounded-sm bg-accent px-8 py-4 text-sm font-semibold uppercase tracking-wide text-bg-primary transition-all duration-300 hover:bg-accent-hover hover:-translate-y-1 hover:shadow-[0_12px_30px_-10px_rgb(var(--shadow)/0.75)] w-full sm:w-auto justify-center"
             >
               {hero.primaryCta}
               <IconArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />

@@ -8,13 +8,15 @@ export default function Customizer() {
 
   useEffect(() => {
     const onOpen = (e) => {
+      
       const key = e.detail?.key
       if (!key) return
       const section = getSection(key) || {}
       if (key === 'hero') {
         const navbarSection = getSection('navbar') || {}
+        const themeSection = getSection('theme') || {}
         setSectionKey('hero')
-        setForm({ ...section, navbar: navbarSection })
+        setForm({ ...section, navbar: navbarSection, theme: themeSection })
       } else {
         setSectionKey(key)
         setForm(section)
@@ -62,6 +64,7 @@ export default function Customizer() {
       if (key === 'hero') {
         window.dispatchEvent(new CustomEvent('forgewell:section-preview', { detail: { key: 'hero', value: getSection('hero') || {} } }))
         window.dispatchEvent(new CustomEvent('forgewell:section-preview', { detail: { key: 'navbar', value: getSection('navbar') || {} } }))
+        window.dispatchEvent(new CustomEvent('forgewell:section-preview', { detail: { key: 'theme', value: getSection('theme') || {} } }))
       } else {
         window.dispatchEvent(new CustomEvent('forgewell:section-preview', { detail: { key, value: getSection(key) || {} } }))
       }
@@ -85,9 +88,11 @@ export default function Customizer() {
       try {
         if (sectionKey === 'hero' && path.startsWith('navbar.')) {
           window.dispatchEvent(new CustomEvent('forgewell:section-preview', { detail: { key: 'navbar', value: copy.navbar } }))
+        } else if (sectionKey === 'hero' && path.startsWith('theme.')) {
+          window.dispatchEvent(new CustomEvent('forgewell:section-preview', { detail: { key: 'theme', value: copy.theme } }))
         } else {
           const previewValue = sectionKey === 'hero' ? (() => {
-            const { navbar: _navbar, ...heroOnly } = copy
+            const { navbar: _navbar, theme: _theme, ...heroOnly } = copy
             return heroOnly
           })() : copy
           window.dispatchEvent(new CustomEvent('forgewell:section-preview', { detail: { key: sectionKey, value: previewValue } }))
@@ -99,9 +104,10 @@ export default function Customizer() {
 
   function handleSave() {
     if (!sectionKey) return
-    if (sectionKey === 'hero' && form.navbar) {
-      const { navbar: navbarForm, ...heroForm } = form
-      saveSection('navbar', navbarForm)
+    if (sectionKey === 'hero') {
+      const { navbar: navbarForm, theme: themeForm, ...heroForm } = form
+      if (navbarForm) saveSection('navbar', navbarForm)
+      if (themeForm) saveSection('theme', themeForm)
       saveSection('hero', heroForm)
     } else {
       saveSection(sectionKey, form)
@@ -184,13 +190,17 @@ function renderSectionForm(sectionKey, form, updateField) {
 function renderHeroForm(form, updateField) {
   return (
     <>
-      {/* <FormSection title="Theme Colors">
+      <FormSection title="Theme Colors">
         <ColorInput label="Accent Color" value={form.theme?.accentColor || '#FFD400'} onChange={(v) => updateField('theme.accentColor', v)} />
+        <ColorInput label="Accent Hover" value={form.theme?.accentHover || '#E5BE00'} onChange={(v) => updateField('theme.accentHover', v)} />
+        <ColorInput label="Shadow Color" value={form.theme?.shadowColor || '#FFD400'} onChange={(v) => updateField('theme.shadowColor', v)} />
         <ColorInput label="Background Primary" value={form.theme?.bgPrimary || '#050505'} onChange={(v) => updateField('theme.bgPrimary', v)} />
         <ColorInput label="Background Secondary" value={form.theme?.bgSecondary || '#0D0D0D'} onChange={(v) => updateField('theme.bgSecondary', v)} />
+        <ColorInput label="Card Background" value={form.theme?.bgCard || '#151515'} onChange={(v) => updateField('theme.bgCard', v)} />
         <ColorInput label="Text Primary" value={form.theme?.textPrimary || '#FFFFFF'} onChange={(v) => updateField('theme.textPrimary', v)} />
         <ColorInput label="Text Secondary" value={form.theme?.textSecondary || '#A3A3A3'} onChange={(v) => updateField('theme.textSecondary', v)} />
-      </FormSection> */}
+        <ColorInput label="Border Color" value={form.theme?.border || '#242424'} onChange={(v) => updateField('theme.border', v)} />
+      </FormSection>
 
       <FormSection title="Navbar">
         <TextInput label="Logo Text" value={form.navbar?.logo || ''} onChange={(v) => updateField('navbar.logo', v)} />
@@ -433,6 +443,28 @@ function TextInput({ label, value, onChange, placeholder }) {
         placeholder={placeholder}
         className="w-full bg-[#0b0b0b] border border-border px-3 py-2 rounded text-sm text-ink-primary focus:border-accent focus:outline-none transition-colors"
       />
+    </div>
+  )
+}
+
+function ColorInput({ label, value, onChange }) {
+  return (
+    <div>
+      {label && <label className="block text-xs font-medium text-ink-secondary mb-1.5">{label}</label>}
+      <div className="flex items-center gap-3">
+        <input
+          type="color"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="w-10 h-10 rounded border border-border bg-[#0b0b0b] cursor-pointer p-0"
+        />
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="flex-1 bg-[#0b0b0b] border border-border px-3 py-2 rounded text-sm text-ink-primary focus:border-accent focus:outline-none transition-colors"
+        />
+      </div>
     </div>
   )
 }

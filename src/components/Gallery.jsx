@@ -18,26 +18,21 @@ export default function Gallery() {
   return (
     <section id="gallery" className="relative py-16">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="sticky top-[5.5rem] z-20">
-          <div className="relative mx-auto pb-8">
-            <div className="sticky top-[5.5rem] z-20 flex flex-wrap items-center justify-end gap-2">
-              <button
-                onClick={() => window.dispatchEvent(new CustomEvent('forgewell:open-customizer', { detail: { key: 'gallery' } }))}
-                className="px-3 py-1 bg-[#222] text-sm rounded"
-              >
-                Customize
-              </button>
-              <button
-                onClick={() => saveSection('gallery', gallery)}
-                className="px-3 py-1 bg-accent text-bg-primary rounded text-sm font-semibold"
-              >
-                Save
-              </button>
-            </div>
-          </div>
+        <div className="sticky top-[5.5rem] z-20 mb-8 flex flex-wrap items-center justify-end gap-2">
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent('forgewell:open-customizer', { detail: { key: 'gallery' } }))}
+            className="px-3 py-1 bg-[#222] text-sm rounded"
+          >
+            Customize
+          </button>
+          <button
+            onClick={() => saveSection('gallery', gallery)}
+            className="px-3 py-1 bg-accent text-bg-primary rounded text-sm font-semibold"
+          >
+            Save
+          </button>
         </div>
-      </div>
-      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-display text-ink-primary">Gallery</h2>
           <p className="mt-3 text-ink-secondary">A few shots from our gym and community.</p>
@@ -57,7 +52,6 @@ export default function Gallery() {
         </div>
       </div>
 
-      {/* Lightbox modal (click to open) */}
       {openSrc && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-6">
           <div className="relative max-w-5xl w-full">
