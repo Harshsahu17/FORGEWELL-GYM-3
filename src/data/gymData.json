@@ -2,7 +2,7 @@
   "navbar": {
     "logo": "FORGE",
     "logoAccent": "WELL",
-    "logoImage": "/images/forgewell-logo.png",
+    "logoImage": "/images/forgewell-logo.jpg",
     "links": [
       { "label": "Home", "href": "#home" },
       { "label": "About", "href": "#about" },
@@ -14,9 +14,9 @@
     "cta": "Join Now"
   },
   "theme": {
-    "accentColor": "#FFD400",
-    "accentHover": "#E5BE00",
-    "shadowColor": "#FFD400",
+    "accentColor": "#e84118",
+    "accentHover": "#d23710",
+    "shadowColor": "#e84118",
     "bgPrimary": "#050505",
     "bgSecondary": "#0D0D0D",
     "bgCard": "#151515",
@@ -26,10 +26,10 @@
   },
   "hero": {
     "eyebrow": "Bhopal's Strength & Conditioning Studio",
-    "headlineTop": "BUILD THE BODY",
-    "headlineBottom": "THAT CARRIES YOU",
-    "description": "Coached strength training, conditioning, and recovery — programmed around your goals, not a generic template. Real coaches, real accountability, measurable results.",
-    "primaryCta": "Join Now",
+    "headlineTop": "BUILD YOUR BODY",
+    "headlineBottom": "STRONG",
+    "description": "Achieve your health & fitness goals at any stage with expert coaching and proven methods.",
+    "primaryCta": "Get Started",
     "secondaryCta": "Explore Services",
     "backgroundImage": "/images/hero.jpg",
     "stats": [
@@ -39,10 +39,16 @@
     ]
   },
   "about": {
-    "eyebrow": "About Forgewell",
-    "heading": "Coaching first. Equipment second.",
-    "description": "Forgewell was built on a simple idea: a gym should make you measurably stronger, not just tired. Every member starts with a movement assessment, trains under certified coaches, and follows a program that adapts as they progress. No guesswork, no wasted reps.",
+    "eyebrow": "About Us",
+    "heading": "WE PROVIDE TRAINING AND BEST",
+    "headingAccent": "FITNESS MOTIVATIONS",
+    "description": "Forgewell was built on a simple idea: a gym should make you measurably stronger, not just tired. Every member starts with a movement assessment, trains under certified coaches, and follows a program that adapts as they progress.",
     "image": "/images/about.jpg",
+    "highlights": [
+      "Over 12 years of coaching experience",
+      "Certified professional trainers",
+      "Exceptional training results"
+    ],
     "stats": [
       { "value": "12", "label": "Years of Experience" },
       { "value": "2,400+", "label": "Happy Members" },
@@ -51,45 +57,55 @@
     "cta": "Learn More"
   },
   "services": {
-    "eyebrow": "What We Offer",
-    "heading": "Programs built around outcomes",
+    "eyebrow": "What We Do",
+    "heading": "OUR",
+    "headingAccent": "SERVICES",
     "description": "Six coached disciplines. Pick one or combine them — your coach will structure the split.",
     "items": [
       {
         "title": "Personal Training",
         "description": "One-on-one programming with a dedicated coach tracking every lift, every week.",
-        "icon": "dumbbell"
+        "icon": "dumbbell",
+        "image": "/images/personal-training.jpg"
       },
       {
-        "title": "Weight Training",
+        "title": "Strength Exercises",
         "description": "Progressive strength blocks for hypertrophy, powerlifting, or general performance.",
-        "icon": "barbell"
+        "icon": "barbell",
+        "image": "/images/strength-exercise.jpg"
       },
       {
         "title": "Cardio Training",
         "description": "Interval and endurance protocols designed around your resting heart rate and goals.",
-        "icon": "heartbeat"
+        "icon": "heartbeat",
+        "image": "/images/cardio-training.jpg"
       },
       {
         "title": "CrossFit",
         "description": "High-intensity functional workouts scaled to every fitness level, coached in small groups.",
-        "icon": "flame"
+        "icon": "flame",
+        "image": "/images/crossfit.jpg"
       },
       {
         "title": "Yoga",
         "description": "Mobility and breathwork sessions that speed recovery and protect against injury.",
-        "icon": "leaf"
+        "icon": "leaf",
+        "image": "/images/yoga.jpg"
       },
       {
         "title": "Nutrition Guidance",
         "description": "Macro planning and meal strategy built around your training load, not fad diets.",
-        "icon": "apple"
+        "icon": "apple",
+        "image": "/images/Nutrition-Guidance.jpg"
       }
     ]
   },
   "membership": {
-    "eyebrow": "Membership",
-    "heading": "Plans for every stage",
+    "eyebrow": "Our Pricing",
+    "heading": "CHOOSE YOUR",
+    "headingAccent": "PRICING",
+    "headingSuffix": "PLAN",
+    "billedText": "Billed per month",
     "description": "Cancel or upgrade anytime. No lock-in contracts.",
     "plans": [
       {
@@ -97,19 +113,21 @@
         "price": "₹1,499",
         "duration": "/ month",
         "recommended": false,
+        "shortDescription": "Full gym access, locker room, group classes twice a week, and app-based workout tracking.",
         "features": [
           "Full gym floor access",
           "Locker room access",
           "2 group classes / week",
           "App-based workout tracking"
         ],
-        "cta": "Choose Basic"
+        "cta": "Join Now"
       },
       {
         "name": "Standard",
         "price": "₹2,799",
         "duration": "/ month",
         "recommended": true,
+        "shortDescription": "Everything in Basic plus unlimited group classes, monthly check-ins, and nutrition guidance.",
         "features": [
           "Everything in Basic",
           "Unlimited group classes",
@@ -117,13 +135,14 @@
           "Nutrition guidance session",
           "Guest passes x2 / month"
         ],
-        "cta": "Choose Standard"
+        "cta": "Join Now"
       },
       {
         "name": "Premium",
         "price": "₹4,999",
         "duration": "/ month",
         "recommended": false,
+        "shortDescription": "Full access with weekly personal training, custom programming, and recovery suite.",
         "features": [
           "Everything in Standard",
           "Weekly 1-on-1 personal training",
@@ -131,13 +150,14 @@
           "Recovery suite access",
           "Priority class booking"
         ],
-        "cta": "Choose Premium"
+        "cta": "Join Now"
       }
     ]
   },
   "howItWorks": {
     "eyebrow": "How It Works",
-    "heading": "From sign-up to your first PR",
+    "heading": "FROM SIGN-UP TO YOUR",
+    "headingAccent": "FIRST PR",
     "steps": [
       {
         "number": "01",

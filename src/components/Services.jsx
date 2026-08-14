@@ -1,30 +1,23 @@
 import data from '../data/gymData.json'
 import useManagedSection from '../utils/useManagedSection'
 import { saveSection } from '../utils/dataManager'
-import { serviceIconMap, IconArrowRight } from './Icons'
 
 function ServiceCard({ service }) {
-  const Icon = serviceIconMap[service.icon]
-
   return (
-    <>
-    <div className="group relative rounded-sm border border-border bg-bg-card p-8 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-accent/60 hover:shadow-[0_20px_40px_-24px_rgb(var(--shadow)/0.5)]">
-      <div className="flex items-center justify-center w-14 h-14 rounded-sm bg-bg-primary border border-border text-accent transition-all duration-300 group-hover:scale-110 group-hover:border-accent">
-        <Icon className="w-6 h-6" />
+    <div className="group relative overflow-hidden rounded-3xl aspect-[4/5] cursor-pointer">
+      {/* Background image */}
+      <img
+        src={service.image || '/images/gallery-1.jpg'}
+        alt={service.title}
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+      {/* Dark overlay gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+      {/* Service title at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 p-6">
+        <h3 className="font-display text-xl text-white tracking-wide">{service.title}</h3>
       </div>
-      <h3 className="mt-6 font-display text-xl tracking-wide text-ink-primary">{service.title}</h3>
-      <p className="mt-3 text-sm text-ink-secondary leading-relaxed">{service.description}</p>
-      <a  
-      href="#membership"
-      className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-accent opacity-80 transition-all duration-300 group-hover:opacity-100 group-hover:gap-2.5"
-      >
-      Learn More
-      <IconArrowRight className="w-3.5 h-3.5" />
-    </a>
-    <div className="absolute inset-x-0 bottom-0 h-0.5 bg-accent scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100">
-    </div>  
     </div>
-    </>
   )
 }
 
@@ -34,6 +27,7 @@ export default function Services() {
   return (
     <section id="services" className="bg-bg-primary py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
+        {/* Customize / Save controls */}
         <div className="sticky top-[5.5rem] z-20 mb-8 flex flex-wrap items-center justify-end gap-2">
           <button
             onClick={() => window.dispatchEvent(new CustomEvent('forgewell:open-customizer', { detail: { key: 'services' } }))}
@@ -43,21 +37,26 @@ export default function Services() {
           </button>
           <button
             onClick={() => saveSection('services', services)}
-            className="px-3 py-1 bg-accent text-bg-primary rounded text-sm font-semibold"
+            className="px-3 py-1 bg-accent text-white rounded text-sm font-semibold"
           >
             Save
           </button>
         </div>
 
-        <div className="max-w-2xl">
-          <span className="text-accent font-mono text-xs sm:text-sm tracking-[0.25em] uppercase">
+        {/* Section header — centered */}
+        <div className="text-center mb-14">
+          <span className="text-ink-secondary text-sm tracking-widest uppercase">
             {services.eyebrow}
           </span>
-          <h2 className="mt-4 font-display text-4xl sm:text-5xl text-ink-primary">{services.heading}</h2>
-          <p className="mt-4 text-ink-secondary">{services.description}</p>
+          <div className="w-10 h-0.5 bg-accent mx-auto mt-2 mb-6" />
+          <h2 className="font-display text-4xl sm:text-5xl text-ink-primary">
+            {services.heading}{' '}
+            <span className="text-accent">{services.headingAccent}</span>
+          </h2>
         </div>
 
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Image cards grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {services.items.map((service) => (
             <ServiceCard key={service.title} service={service} />
           ))}

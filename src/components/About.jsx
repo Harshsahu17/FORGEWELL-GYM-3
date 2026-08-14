@@ -25,16 +25,14 @@ export default function About() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-          <div className="relative">
-            <div className="relative aspect-[4/5] max-w-md mx-auto lg:max-w-none overflow-hidden rounded-sm">
+          <div className="relative ">
+            <div className="relative aspect-[4/5] max-w-md mx-auto lg:max-w-none overflow-hidden rounded-3xl">
               <img
                 src={about.image}
                 alt="Coach guiding a member through a lift at Forgewell"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 ring-1 ring-inset ring-border" />
             </div>
-            <div className="hidden sm:block absolute -bottom-6 -right-6 w-40 h-40 border border-accent/40 -z-10" />
           </div>
 
           <div>

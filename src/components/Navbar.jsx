@@ -6,20 +6,29 @@ import { IconMenu, IconClose } from './Icons'
 export default function Navbar() {
   const navbar = useManagedSection('navbar', data.navbar)
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
-  // Lock body scroll while the mobile menu is open
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
-    return () => {
-      document.body.style.overflow = ''
-    }
+    return () => { document.body.style.overflow = '' }
   }, [open])
 
   const handleLinkClick = () => setOpen(false)
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-[#0d0d0d] border-b border-border shadow-[0_14px_34px_-26px_rgb(var(--shadow)/0.75)] py-4">
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-[#0d0d0d]/95 backdrop-blur-sm shadow-lg' : 'bg-[#0d0d0d]'
+      } border-b border-border py-4`}
+    >
       <nav className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between">
+        {/* Logo */}
         <a
           href="#home"
           className="flex items-center gap-3 text-white select-none"
@@ -35,36 +44,34 @@ export default function Navbar() {
           </span>
         </a>
 
-        <ul className="hidden lg:flex items-center gap-9">
+        {/* Desktop nav links */}
+        <ul className="hidden lg:flex items-center gap-8">
           {navbar.links.map((link) => (
             <li key={link.label}>
               <a
                 href={link.href}
-                className="relative text-sm font-medium text-ink-secondary"
+                className="relative text-sm font-medium text-ink-secondary transition-colors duration-200 hover:text-white
+                  after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-accent
+                  after:transition-all after:duration-300 hover:after:w-full"
               >
                 {link.label}
               </a>
             </li>
           ))}
-          <li>
-            <a
-              href="#gallery"
-              className="relative text-sm font-medium text-ink-secondary"
-            >
-              Gallery
-            </a>
-          </li>
         </ul>
 
+        {/* Desktop CTA */}
         <div className="hidden lg:block">
           <a
             href="#membership"
-            className="inline-flex items-center rounded-sm bg-accent px-6 py-2.5 text-sm font-semibold text-bg-primary"
+            className="inline-flex items-center rounded-full bg-accent px-7 py-2.5 text-sm font-semibold text-white
+              transition-all duration-300 hover:bg-accent-hover hover:shadow-[0_8px_24px_-8px_rgb(var(--shadow)/0.7)]"
           >
             {navbar.cta}
           </a>
         </div>
 
+        {/* Mobile menu toggle */}
         <button
           type="button"
           aria-label={open ? 'Close menu' : 'Open menu'}
@@ -80,18 +87,18 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div
         id="mobile-menu"
-        className={`lg:hidden absolute inset-x-0 top-full overflow-hidden ${
+        className={`lg:hidden absolute inset-x-0 top-full overflow-hidden transition-all duration-300 ${
           open ? 'max-h-[32rem] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="bg-[#0b0b0b] border-t border-[#252525] shadow-[0_18px_40px_-28px_rgba(0,0,0,0.9)] px-5 py-6 flex flex-col gap-1">
+        <div className="bg-[#0b0b0b] border-t border-[#252525] shadow-xl px-5 py-6 flex flex-col gap-1">
           {navbar.links.map((link, i) => (
             <a
               key={link.label}
               href={link.href}
               onClick={handleLinkClick}
               style={{ transitionDelay: open ? `${i * 40}ms` : '0ms' }}
-              className={`py-3 text-base font-semibold text-ink-secondary border-b border-border last:border-b-0 ${
+              className={`py-3 text-base font-semibold text-ink-secondary border-b border-border last:border-b-0 transition-opacity duration-200 ${
                 open ? 'opacity-100' : 'opacity-0'
               }`}
             >
@@ -99,18 +106,9 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#gallery"
-            onClick={handleLinkClick}
-            className={`py-3 text-base font-semibold text-ink-secondary border-b border-border last:border-b-0 ${
-              open ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            Gallery
-          </a>
-          <a
             href="#membership"
             onClick={handleLinkClick}
-            className="mt-4 text-center rounded-sm bg-accent px-6 py-3 text-sm font-semibold text-bg-primary transition-colors duration-300 hover:bg-accent-hover"
+            className="mt-4 text-center rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-accent-hover"
           >
             {navbar.cta}
           </a>

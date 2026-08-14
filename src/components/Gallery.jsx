@@ -40,7 +40,7 @@ export default function Gallery() {
 
         <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4">
           {gallery.map((src, i) => (
-            <div key={i} className="overflow-hidden rounded-lg bg-bg-card">
+            <div key={i} className="overflow-hidden rounded-3xl bg-bg-card">
               <img
                 src={src}
                 alt={`Gym photo ${i + 1}`}

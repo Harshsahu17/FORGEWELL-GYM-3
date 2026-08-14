@@ -1,7 +1,7 @@
 export const DEFAULT_THEME = {
-  accentColor: '#FFD400',
-  accentHover: '#E5BE00',
-  shadowColor: '#FFD400',
+  accentColor: '#e84118',
+  accentHover: '#d23710',
+  shadowColor: '#e84118',
   bgPrimary: '#050505',
   bgSecondary: '#0D0D0D',
   bgCard: '#151515',

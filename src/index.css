@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --accent: 255 212 0;
-  --accent-hover: 229 190 0;
+  --accent: 96 162 52;
+  --accent-hover: 78 208 53;
   --bg-primary: 5 5 5;
   --bg-secondary: 13 13 13;
   --bg-card: 21 21 21;
   --ink-primary: 255 255 255;
   --ink-secondary: 163 163 163;
   --border: 36 36 36;
-  --shadow: 255 212 0;
+  --shadow: 60 190 62;
 }
 html {
   scroll-behavior: smooth;
@@ -44,7 +44,7 @@ body {
 }
 
 ::selection {
-  background-color: #E46E00;
+  background-color: #e84118;
   color: #0a0a0a;
 }
 
@@ -72,6 +72,6 @@ body {
 }
 
 .text-outline-accent {
-  -webkit-text-stroke: 1.5px #E46E00;
+  -webkit-text-stroke: 1.5px #e84118;
   color: transparent;
 }
