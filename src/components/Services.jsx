@@ -1,49 +1,32 @@
 import data from '../data/gymData.json'
-import useManagedSection from '../utils/useManagedSection'
-import { saveSection } from '../utils/dataManager'
 
 function ServiceCard({ service }) {
   return (
-    <div className="group relative overflow-hidden rounded-3xl aspect-[4/5] cursor-pointer">
-      {/* Background image */}
+    <div className="group relative overflow-hidden rounded-3xl aspect-square cursor-pointer">
       <img
         src={service.image || '/images/gallery-1.jpg'}
         alt={service.title}
-        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
       />
-      {/* Dark overlay gradient */}
+      {/* Always-on gradient for title readability */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-      {/* Service title at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 p-6">
-        <h3 className="font-display text-xl text-white tracking-wide">{service.title}</h3>
+      {/* Extra darkening on hover */}
+      <div className="absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      <div className="absolute inset-0 ring-1 ring-inset ring-accent/0 rounded-3xl transition-all duration-500 group-hover:ring-accent/40" />
+      <div className="absolute bottom-0 left-0 right-0 p-4">
+        <h3 className="font-display text-base text-white tracking-wide">{service.title}</h3>
+        <p className="text-sm text-white/80">{service.description}</p>
       </div>
     </div>
   )
 }
 
 export default function Services() {
-  const services = useManagedSection('services', data.services)
+  const services = data.services
 
   return (
-    <section id="services" className="bg-bg-primary py-24 sm:py-32">
+    <section id="services" className="bg-bg-primary py-16 sm:py-16">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        {/* Customize / Save controls */}
-        <div className="sticky top-[5.5rem] z-20 mb-8 flex flex-wrap items-center justify-end gap-2">
-          <button
-            onClick={() => window.dispatchEvent(new CustomEvent('forgewell:open-customizer', { detail: { key: 'services' } }))}
-            className="px-3 py-1 bg-[#222] text-sm rounded"
-          >
-            Customize
-          </button>
-          <button
-            onClick={() => saveSection('services', services)}
-            className="px-3 py-1 bg-accent text-white rounded text-sm font-semibold"
-          >
-            Save
-          </button>
-        </div>
-
-        {/* Section header — centered */}
         <div className="text-center mb-14">
           <span className="text-ink-secondary text-sm tracking-widest uppercase">
             {services.eyebrow}
@@ -55,8 +38,7 @@ export default function Services() {
           </h2>
         </div>
 
-        {/* Image cards grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
           {services.items.map((service) => (
             <ServiceCard key={service.title} service={service} />
           ))}

@@ -1,12 +1,11 @@
 import data from '../data/gymData.json'
-import useManagedSection from '../utils/useManagedSection'
 import { IconMapPin, IconPhone, IconMail, socialIconMap } from './Icons'
 
 export default function Footer() {
-  const footer = useManagedSection('footer', data.footer)
+  const footer = data.footer
 
   return (
-    <footer id="contact" className="bg-bg-secondary border-t border-border pt-20 pb-8">
+    <footer className="bg-bg-secondary border-t border-border pt-10 pb-4">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -76,7 +75,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="mt-4 pt-3 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-ink-secondary">{footer.copyright}</p>
           <div className="flex items-center gap-6 text-xs text-ink-secondary">
             <a href="#" className="hover:text-accent transition-colors duration-300">Privacy Policy</a>

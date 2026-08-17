@@ -8,21 +8,11 @@
       { "label": "About", "href": "#about" },
       { "label": "Services", "href": "#services" },
       { "label": "Membership", "href": "#membership" },
+      { "label": "Testimonials", "href": "#testimonials" },
       { "label": "How It Works", "href": "#how-it-works" },
       { "label": "Contact", "href": "#contact" }
     ],
     "cta": "Join Now"
-  },
-  "theme": {
-    "accentColor": "#e84118",
-    "accentHover": "#d23710",
-    "shadowColor": "#e84118",
-    "bgPrimary": "#050505",
-    "bgSecondary": "#0D0D0D",
-    "bgCard": "#151515",
-    "textPrimary": "#FFFFFF",
-    "textSecondary": "#A3A3A3",
-    "border": "#242424"
   },
   "hero": {
     "eyebrow": "Bhopal's Strength & Conditioning Studio",
@@ -181,14 +171,34 @@
       }
     ]
   },
-  "gallery": [
-    "/images/gallery-1.jpg",
-    "/images/gallery-2.jpg",
-    "/images/gallery-3.jpg",
-    "/images/gallery-4.jpg",
-    "/images/gallery-5.jpg",
-    "/images/gallery-6.jpg"
-  ],
+  "testimonials": {
+  "eyebrow": "What Members Say",
+  "heading": "REAL RESULTS FROM OUR",
+  "headingAccent": "COMMUNITY",
+  "items": [
+    {
+      "name": "Ananya Sharma",
+      "role": "Member since 2023",
+      "quote": "Forgewell completely changed how I train. The coaches actually track your progress instead of just handing you a program and walking away.",
+      "avatar": "/images/testimonial-1.jpg",
+      "rating": 5
+    },
+    {
+      "name": "Rohit Verma",
+      "role": "Member since 2022",
+      "quote": "Best decision I made this year. Down 14kg and stronger than I've ever been, with a coach who actually checks my form every session.",
+      "avatar": "/images/testimonial-2.jpg",
+      "rating": 5
+    },
+    {
+      "name": "Priya Nair",
+      "role": "Member since 2024",
+      "quote": "The nutrition guidance alone was worth the membership. Combined with the training, I finally understand what sustainable progress looks like.",
+      "avatar": "/images/testimonial-3.jpg",
+      "rating": 5
+    }
+  ]
+},
   "footer": {
     "logo": "FORGE",
     "logoAccent": "WELL",
@@ -202,7 +212,8 @@
     "contact": {
       "address": "14 MP Nagar, Zone II, Bhopal, MP 462011",
       "phone": "+91 98765 43210",
-      "email": "hello@forgewell.fit"
+      "email": "hello@forgewell.fit",
+      "image": "/images/contact.jpg"
     },
     "social": ["instagram", "facebook", "twitter", "youtube"],
     "copyright": "© 2026 Forgewell. All rights reserved."

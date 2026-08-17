@@ -1,15 +1,12 @@
 import data from '../data/gymData.json'
-import useManagedSection from '../utils/useManagedSection'
-import { saveSection } from '../utils/dataManager'
 
 export default function Hero() {
-  const hero = useManagedSection('hero', data.hero)
-  const navbar = useManagedSection('navbar', data.navbar)
+  const hero = data.hero
 
   return (
-    <section id="home" className="relative isolate min-h-screen flex items-center overflow-hidden pt-20 pb-16">
+    <section id="home" className="relative isolate min-h-screen flex items-center pt-20 pb-10">
       {/* Background image with overlays */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <img
           src={hero.backgroundImage}
           alt="Athlete training under gym lighting"
@@ -20,28 +17,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-bg-primary/80 via-bg-primary/30 to-transparent" />
       </div>
 
-
-      {/* Customize / Save controls */}
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 w-full">
-        <div className="sticky top-[5.5rem] z-20 mb-8 flex flex-wrap items-center justify-end gap-2">
-          <button
-            onClick={() => window.dispatchEvent(new CustomEvent('forgewell:open-customizer', { detail: { key: 'hero' } }))}
-            className="px-3 py-1 bg-[#222] text-sm rounded"
-          >
-            Customize
-          </button>
-          <button
-            onClick={() => {
-              saveSection('hero', hero)
-              saveSection('navbar', navbar)
-            }}
-            className="px-3 py-1 bg-accent text-white rounded text-sm font-semibold"
-          >
-            Save
-          </button>
-        </div>
-
-        {/* Hero content */}
         <div className="max-w-3xl items-center flex flex-col text-center mx-auto">
           <span
             className="inline-block opacity-0 animate-fade-down text-accent font-mono text-xs sm:text-sm tracking-[0.25em] uppercase"
@@ -86,8 +62,6 @@ export default function Hero() {
               {hero.secondaryCta}
             </a>
           </div>
-
-          
         </div>
       </div>
     </section>

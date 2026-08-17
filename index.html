@@ -8,40 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <script>
-      (function () {
-        try {
-          var raw = localStorage.getItem('forgewell_overrides_v1');
-          var overrides = raw ? JSON.parse(raw) : {};
-          var theme = overrides.theme || {};
-          var map = {
-            accentColor: '--accent',
-            accentHover: '--accent-hover',
-            shadowColor: '--shadow',
-            bgPrimary: '--bg-primary',
-            bgSecondary: '--bg-secondary',
-            bgCard: '--bg-card',
-            textPrimary: '--ink-primary',
-            textSecondary: '--ink-secondary',
-            border: '--border',
-          };
-          function hexToRgb(hex) {
-            if (!hex) return null;
-            var clean = hex.replace('#', '').trim();
-            var full = clean.length === 3 ? clean.split('').map(function (c) { return c + c; }).join('') : clean;
-            if (!/^[0-9a-fA-F]{6}$/.test(full)) return null;
-            var r = parseInt(full.slice(0, 2), 16);
-            var g = parseInt(full.slice(2, 4), 16);
-            var b = parseInt(full.slice(4, 6), 16);
-            return r + ' ' + g + ' ' + b;
-          }
-          Object.keys(map).forEach(function (key) {
-            var rgb = hexToRgb(theme[key]);
-            if (rgb) document.documentElement.style.setProperty(map[key], rgb);
-          });
-        } catch (e) {}
-      })();
-    </script>
   </head>
   <body>
     <div id="root"></div>

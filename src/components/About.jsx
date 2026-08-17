@@ -1,37 +1,22 @@
 import data from '../data/gymData.json'
-import useManagedSection from '../utils/useManagedSection'
-import { saveSection } from '../utils/dataManager'
 import { IconArrowRight } from './Icons'
 
 export default function About() {
-  const about = useManagedSection('about', data.about)
+  const about = data.about
 
   return (
-    <section id="about" className="relative bg-bg-secondary py-24 sm:py-32 overflow-visible">
+    <section id="about" className="relative bg-bg-secondary py-16 sm:py-16 overflow-visible">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
-        <div className="sticky top-[5.5rem] z-20 mb-8 flex flex-wrap items-center justify-end gap-2">
-          <button
-            onClick={() => window.dispatchEvent(new CustomEvent('forgewell:open-customizer', { detail: { key: 'about' } }))}
-            className="px-3 py-1 bg-[#222] text-sm rounded"
-          >
-            Customize
-          </button>
-          <button
-            onClick={() => saveSection('about', about)}
-            className="px-3 py-1 bg-accent text-bg-primary rounded text-sm font-semibold"
-          >
-            Save
-          </button>
-        </div>
-
         <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-          <div className="relative ">
-            <div className="relative aspect-[4/5] max-w-md mx-auto lg:max-w-none overflow-hidden rounded-3xl">
+          <div className="relative">
+            <div className="group relative aspect-[4/5] max-w-sm mx-auto overflow-hidden rounded-3xl cursor-pointer">
               <img
                 src={about.image}
                 alt="Coach guiding a member through a lift at Forgewell"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="absolute inset-0 ring-1 ring-inset ring-accent/0 rounded-3xl transition-all duration-500 group-hover:ring-accent/40" />
             </div>
           </div>
 
