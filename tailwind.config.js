@@ -79,6 +79,10 @@ export default {
           '0%': { width: '0%' },
           '100%': { width: '100%' },
         },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(24px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
       },
       animation: {
         'fade-in': 'fadeIn 0.8s ease-out forwards',
@@ -92,6 +96,7 @@ export default {
         'float-slow': 'floatSlow 8s ease-in-out infinite',
         marquee: 'marquee 22s linear infinite',
         'pulse-bar': 'pulseBar 1.1s ease-in-out infinite',
+        'slide-up': 'slideUp 0.1s cubic-bezier(0.16,1,0.3,1) forwards',
       },
     },
   },

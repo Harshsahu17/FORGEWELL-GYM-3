@@ -3,15 +3,24 @@
 @tailwind utilities;
 
 :root {
-  --accent: 96 162 52;
-  --accent-hover: 78 208 53;
-  --bg-primary: 5 5 5;
-  --bg-secondary: 13 13 13;
-  --bg-card: 21 21 21;
-  --ink-primary: 255 255 255;
-  --ink-secondary: 163 163 163;
-  --border: 36 36 36;
-  --shadow: 60 190 62;
+  /* Brand */
+  --accent: 163 230 53;          /* #A3E635 */
+  --accent-hover: 190 242 100;   /* #BEF264 */
+
+  /* Background */
+  --bg-primary: 7 10 8;          /* #070A08 */
+  --bg-secondary: 13 17 14;      /* #0D110E */
+  --bg-card: 20 26 21;           /* #141A15 */
+
+  /* Text */
+  --ink-primary: 255 255 255;    /* #FFFFFF */
+  --ink-secondary: 156 163 160;  /* #9CA3A0 */
+
+  /* Border */
+  --border: 38 48 40;            /* #263028 */
+
+  /* Effects */
+  --shadow: 163 230 53;          /* #A3E635 */
 }
 html {
   scroll-behavior: smooth;

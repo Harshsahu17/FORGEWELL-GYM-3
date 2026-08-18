@@ -53,7 +53,7 @@ export default function Membership() {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8">
           {membership.plans.map((plan) => (
             <PlanCard key={plan.name} plan={plan} />
           ))}
