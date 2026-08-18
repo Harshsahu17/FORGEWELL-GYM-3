@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import data from '../data/gymData.json'
 import { IconMenu, IconClose } from './Icons'
 
 export default function Navbar() {
   const navbar = data.navbar
   const [open, setOpen] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
@@ -13,14 +16,26 @@ export default function Navbar() {
 
   const handleLinkClick = () => setOpen(false)
 
+  const resolveLink = (href) => (location.pathname === '/' ? href : `/${href}`)
+
+  function handleLogoClick(e) {
+    if (location.pathname === '/') {
+      e.preventDefault()
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      navigate('/')
+    }
+  }
+
   return (
     <header
       className="fixed top-0 inset-x-0 z-50 bg-[#0d0d0d] border-b border-border py-4"
     >
       <nav className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between">
         {/* Logo */}
-        <a
-          href="#home"
+        <Link
+          to="/"
+          onClick={handleLogoClick}
           className="flex items-center gap-3 text-white select-none"
           aria-label={`${navbar.logo}${navbar.logoAccent} home`}
         >
@@ -32,14 +47,14 @@ export default function Navbar() {
           <span className="font-display text-2xl tracking-wide leading-none">
             {navbar.logo}<span className="text-accent">{navbar.logoAccent}</span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop nav links */}
         <ul className="hidden lg:flex items-center gap-8">
           {navbar.links.map((link) => (
             <li key={link.label}>
               <a
-                href={link.href}
+                href={resolveLink(link.href)}
                 className="relative text-sm font-medium text-ink-secondary transition-colors duration-200 hover:text-white
                   after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-accent
                   after:transition-all after:duration-300 hover:after:w-full"
@@ -52,13 +67,13 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:block">
-          <a
-            href="#membership"
+          <Link
+            to="/inquiry"
             className="inline-flex items-center rounded-full bg-accent px-7 py-2.5 text-sm font-semibold text-white
               transition-all duration-300 hover:bg-accent-hover hover:shadow-[0_8px_24px_-8px_rgb(var(--shadow)/0.7)]"
           >
             {navbar.cta}
-          </a>
+          </Link>
         </div>
 
         {/* Mobile menu toggle */}
@@ -85,7 +100,7 @@ export default function Navbar() {
           {navbar.links.map((link, i) => (
             <a
               key={link.label}
-              href={link.href}
+              href={resolveLink(link.href)}
               onClick={handleLinkClick}
               style={{ transitionDelay: open ? `${i * 40}ms` : '0ms' }}
               className={`py-3 text-base font-semibold text-ink-secondary border-b border-border last:border-b-0 transition-opacity duration-200 ${
@@ -95,13 +110,13 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
-          <a
-            href="#membership"
+          <Link
+            to="/inquiry"
             onClick={handleLinkClick}
             className="mt-4 text-center rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-accent-hover"
           >
             {navbar.cta}
-          </a>
+          </Link>
         </div>
       </div>
     </header>

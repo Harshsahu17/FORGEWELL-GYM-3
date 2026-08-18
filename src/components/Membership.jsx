@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import data from '../data/gymData.json'
 
 function PlanCard({ plan }) {
@@ -23,14 +24,14 @@ function PlanCard({ plan }) {
         {plan.shortDescription || plan.features.slice(0, 2).join(', ')}
       </p>
 
-      <a
-        href="#contact"
+      <Link
+        to={`/inquiry?plan=${encodeURIComponent(plan.name)}`}
         className="rounded-full bg-accent px-8 py-3 text-sm font-semibold text-white
           transition-all duration-300 hover:bg-accent-hover hover:shadow-[0_10px_26px_-10px_rgb(var(--shadow)/0.7)]
-          hover:-translate-y-0.5 w-full"
+          hover:-translate-y-0.5 w-full text-center"
       >
         {plan.cta}
-      </a>
+      </Link>
     </div>
   )
 }
