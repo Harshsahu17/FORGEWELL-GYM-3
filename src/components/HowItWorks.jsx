@@ -26,7 +26,12 @@ export default function HowItWorks() {
           <span className="text-accent font-mono text-xs sm:text-sm tracking-[0.25em] uppercase">
             {howItWorks.eyebrow}
           </span>
-          <h2 className="mt-4 font-display text-4xl sm:text-5xl text-ink-primary">{howItWorks.heading}</h2>
+          <h2 className="mt-4 font-display text-4xl sm:text-5xl text-ink-primary text-center">
+            {howItWorks.heading}{' '}
+            {howItWorks.headingAccent && (
+              <span className="text-accent">{howItWorks.headingAccent}</span>
+            )}
+          </h2>
         </div>
 
         <div className="mt-16 flex flex-col lg:flex-row gap-12 lg:gap-8">

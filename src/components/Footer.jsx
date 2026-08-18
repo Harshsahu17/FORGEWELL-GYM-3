@@ -32,7 +32,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display text-sm tracking-[0.15em] uppercase text-ink-primary">Quick Links</h4>
+            <h4 className="font-display text-sm tracking-[0.15em] uppercase text-ink-primary">{footer.quickLinksHeading}</h4>
             <ul className="mt-5 space-y-3">
               {footer.quickLinks.map((link) => (
                 <li key={link.label}>
@@ -48,7 +48,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display text-sm tracking-[0.15em] uppercase text-ink-primary">Contact</h4>
+            <h4 className="font-display text-sm tracking-[0.15em] uppercase text-ink-primary">{footer.contactHeading}</h4>
             <ul className="mt-5 space-y-4">
               <li className="flex items-start gap-3 text-sm text-ink-secondary">
                 <IconMapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-accent" />
@@ -66,11 +66,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display text-sm tracking-[0.15em] uppercase text-ink-primary">Studio Hours</h4>
+            <h4 className="font-display text-sm tracking-[0.15em] uppercase text-ink-primary">{footer.hoursHeading}</h4>
             <ul className="mt-5 space-y-3 text-sm text-ink-secondary">
-              <li className="flex justify-between gap-4"><span>Mon – Fri</span><span>05:00 – 22:00</span></li>
-              <li className="flex justify-between gap-4"><span>Saturday</span><span>06:00 – 20:00</span></li>
-              <li className="flex justify-between gap-4"><span>Sunday</span><span>07:00 – 18:00</span></li>
+              {footer.hours.map((h) => (
+                <li key={h.label} className="flex justify-between gap-4">
+                  <span>{h.label}</span><span>{h.value}</span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -78,8 +80,11 @@ export default function Footer() {
         <div className="mt-4 pt-3 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-ink-secondary">{footer.copyright}</p>
           <div className="flex items-center gap-6 text-xs text-ink-secondary">
-            <a href="#" className="hover:text-accent transition-colors duration-300">Privacy Policy</a>
-            <a href="#" className="hover:text-accent transition-colors duration-300">Terms of Service</a>
+            {footer.legalLinks.map((link) => (
+              <a key={link.label} href={link.href} className="hover:text-accent transition-colors duration-300">
+                {link.label}
+              </a>
+            ))}
           </div>
         </div>
       </div>

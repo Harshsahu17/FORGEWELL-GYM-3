@@ -3,6 +3,7 @@ import data from '../data/gymData.json'
 
 export default function ContactForm() {
   const contact = data.footer.contact
+  const copy = data.contactForm
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
 
@@ -36,20 +37,20 @@ export default function ContactForm() {
           {/* Right: Heading + Form */}
           <div>
             <span className="text-accent font-mono text-xs sm:text-sm tracking-[0.25em] uppercase">
-              Get In Touch
+              {copy.eyebrow}
             </span>
             <h2 className="mt-4 font-display text-4xl sm:text-5xl leading-[1.05] text-ink-primary">
-              LET'S <span className="text-accent">TALK</span>
+              {copy.headingMain} <span className="text-accent">{copy.headingAccent}</span>
             </h2>
             <p className="mt-6 text-ink-secondary leading-relaxed">
-              Have a question about memberships or training? Send us a message and a coach will get back to you.
+              {copy.description}
             </p>
 
             <div className="mt-8">
               {submitted ? (
                 <div className="bg-bg-card border border-border rounded-2xl p-8 text-center">
-                  <p className="text-ink-primary font-semibold">Thanks! Your message has been sent.</p>
-                  <p className="mt-2 text-sm text-ink-secondary">A coach will reach out to you shortly.</p>
+                  <p className="text-ink-primary font-semibold">{copy.successTitle}</p>
+                  <p className="mt-2 text-sm text-ink-secondary">{copy.successMessage}</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -58,7 +59,7 @@ export default function ContactForm() {
                       type="text"
                       name="name"
                       required
-                      placeholder="Your Name"
+                      placeholder={copy.placeholders.name}
                       value={form.name}
                       onChange={handleChange}
                       className="w-full bg-bg-card border border-border px-4 py-3 rounded-lg text-sm text-ink-primary placeholder:text-ink-secondary focus:border-accent focus:outline-none transition-colors"
@@ -67,7 +68,7 @@ export default function ContactForm() {
                       type="email"
                       name="email"
                       required
-                      placeholder="Your Email"
+                      placeholder={copy.placeholders.email}
                       value={form.email}
                       onChange={handleChange}
                       className="w-full bg-bg-card border border-border px-4 py-3 rounded-lg text-sm text-ink-primary placeholder:text-ink-secondary focus:border-accent focus:outline-none transition-colors"
@@ -76,7 +77,7 @@ export default function ContactForm() {
                   <input
                     type="tel"
                     name="phone"
-                    placeholder="Phone Number"
+                    placeholder={copy.placeholders.phone}
                     value={form.phone}
                     onChange={handleChange}
                     className="w-full bg-bg-card border border-border px-4 py-3 rounded-lg text-sm text-ink-primary placeholder:text-ink-secondary focus:border-accent focus:outline-none transition-colors"
@@ -85,7 +86,7 @@ export default function ContactForm() {
                     name="message"
                     required
                     rows={5}
-                    placeholder="Your Message"
+                    placeholder={copy.placeholders.message}
                     value={form.message}
                     onChange={handleChange}
                     className="w-full bg-bg-card border border-border px-4 py-3 rounded-lg text-sm text-ink-primary placeholder:text-ink-secondary focus:border-accent focus:outline-none transition-colors resize-none"
@@ -95,7 +96,7 @@ export default function ContactForm() {
                       type="submit"
                       className="w-full sm:w-auto rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-accent-hover hover:-translate-y-0.5 hover:shadow-[0_10px_26px_-10px_rgb(var(--shadow)/0.7)]"
                     >
-                      Send Message
+                      {copy.submitButtonText}
                     </button>
                   </div>
                 </form>

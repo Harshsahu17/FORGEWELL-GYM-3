@@ -22,6 +22,11 @@ export default function Navbar() {
     if (location.pathname === '/') {
       e.preventDefault()
       window.scrollTo({ top: 0, behavior: 'smooth' })
+      // Clear any leftover hash (e.g. #services) so a refresh doesn't
+      // re-trigger Home's scroll-to-hash effect and jump back down.
+      if (location.hash) {
+        navigate('/', { replace: true })
+      }
     } else {
       navigate('/')
     }

@@ -1,5 +1,5 @@
 import data from '../data/gymData.json'
-import { IconArrowRight } from './Icons'
+import { IconArrowRight, IconCheck } from './Icons'
 
 export default function About() {
   const about = data.about
@@ -25,9 +25,25 @@ export default function About() {
               {about.eyebrow}
             </span>
             <h2 className="mt-4 font-display text-4xl sm:text-5xl leading-[1.05] text-ink-primary">
-              {about.heading}
+              {about.heading}{' '}
+              {about.headingAccent && (
+                <span className="text-accent">{about.headingAccent}</span>
+              )}
             </h2>
             <p className="mt-6 text-ink-secondary leading-relaxed">{about.description}</p>
+
+            {about.highlights && about.highlights.length > 0 && (
+              <ul className="mt-6 space-y-3">
+                {about.highlights.map((highlight) => (
+                  <li key={highlight} className="flex items-start gap-3">
+                    <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center">
+                      <IconCheck className="w-3 h-3 text-accent" />
+                    </span>
+                    <span className="text-sm text-ink-secondary">{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
 
             <div className="mt-10 grid grid-cols-3 gap-6 border-y border-border py-7">
               {about.stats.map((stat) => (

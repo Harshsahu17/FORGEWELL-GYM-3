@@ -172,50 +172,116 @@
     ]
   },
   "testimonials": {
-  "eyebrow": "What Members Say",
-  "heading": "REAL RESULTS FROM OUR",
-  "headingAccent": "COMMUNITY",
-  "items": [
-    {
-      "name": "Ananya Sharma",
-      "role": "Member since 2023",
-      "quote": "Forgewell completely changed how I train. The coaches actually track your progress instead of just handing you a program and walking away.",
-      "avatar": "/images/testimonial-1.jpg",
-      "rating": 5
+    "eyebrow": "What Members Say",
+    "heading": "REAL RESULTS FROM OUR",
+    "headingAccent": "COMMUNITY",
+    "items": [
+      {
+        "name": "Ananya Sharma",
+        "role": "Member since 2023",
+        "quote": "Forgewell completely changed how I train. The coaches actually track your progress instead of just handing you a program and walking away.",
+        "avatar": "/images/testimonial-1.jpg",
+        "rating": 5
+      },
+      {
+        "name": "Rohit Verma",
+        "role": "Member since 2022",
+        "quote": "Best decision I made this year. Down 14kg and stronger than I've ever been, with a coach who actually checks my form every session.",
+        "avatar": "/images/testimonial-2.jpg",
+        "rating": 5
+      },
+      {
+        "name": "Priya Nair",
+        "role": "Member since 2024",
+        "quote": "The nutrition guidance alone was worth the membership. Combined with the training, I finally understand what sustainable progress looks like.",
+        "avatar": "/images/testimonial-3.jpg",
+        "rating": 5
+      }
+    ]
+  },
+  "contactForm": {
+    "eyebrow": "Get In Touch",
+    "headingMain": "LET'S",
+    "headingAccent": "TALK",
+    "description": "Have a question about memberships or training? Send us a message and a coach will get back to you.",
+    "placeholders": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "phone": "Phone Number",
+      "message": "Your Message"
     },
-    {
-      "name": "Rohit Verma",
-      "role": "Member since 2022",
-      "quote": "Best decision I made this year. Down 14kg and stronger than I've ever been, with a coach who actually checks my form every session.",
-      "avatar": "/images/testimonial-2.jpg",
-      "rating": 5
+    "submitButtonText": "Send Message",
+    "successTitle": "Thanks! Your message has been sent.",
+    "successMessage": "A coach will reach out to you shortly."
+  },
+  "inquiry": {
+    "eyebrow": "Membership Inquiry",
+    "headingMain": "JOIN",
+    "headingAccent": "FORGEWELL",
+    "description": "Fill out the form and a coach will reach out within 24 hours to confirm your membership and answer any questions.",
+    "backLinkText": "Back to Home",
+    "benefits": [
+      "Certified coaches guiding every session",
+      "Personalized programming that adapts to you",
+      "Flexible plans — cancel or upgrade anytime",
+      "Free movement assessment on day one",
+      "Small group classes, never overcrowded",
+      "Nutrition guidance included with every plan",
+      "Modern equipment, sanitized after every use",
+      "Progress tracked and reviewed monthly"
+    ],
+    "stats": [
+      { "value": "12+", "label": "Years Coaching" },
+      { "value": "2.4K", "label": "Members Trained" },
+      { "value": "18", "label": "Trainers" }
+    ],
+    "genderOptions": ["Male", "Female", "Other"],
+    "placeholders": {
+      "name": "Your Full Name",
+      "email": "Your Email Address",
+      "phone": "Phone",
+      "message": "Anything else we should know? (optional)"
     },
-    {
-      "name": "Priya Nair",
-      "role": "Member since 2024",
-      "quote": "The nutrition guidance alone was worth the membership. Combined with the training, I finally understand what sustainable progress looks like.",
-      "avatar": "/images/testimonial-3.jpg",
-      "rating": 5
-    }
-  ]
-},
+    "labels": {
+      "gender": "Gender",
+      "plan": "Select Plan",
+      "planPlaceholder": "Choose a plan",
+      "joiningDate": "Preferred Joining Date",
+      "services": "Interested Services"
+    },
+    "submitButtonText": "Submit Inquiry",
+    "successTitle": "Thanks for your inquiry!",
+    "successMessage": "A coach will contact you shortly to confirm your membership details."
+  },
   "footer": {
     "logo": "FORGE",
     "logoAccent": "WELL",
     "description": "A coached strength and conditioning studio in Bhopal, built for people who want measurable progress, not just a membership card.",
+    "quickLinksHeading": "Quick Links",
     "quickLinks": [
       { "label": "About", "href": "#about" },
       { "label": "Services", "href": "#services" },
       { "label": "Membership", "href": "#membership" },
       { "label": "Contact", "href": "#contact" }
     ],
+    "contactHeading": "Contact",
     "contact": {
       "address": "14 MP Nagar, Zone II, Bhopal, MP 462011",
       "phone": "+91 98765 43210",
       "email": "hello@forgewell.fit",
       "image": "/images/contact.jpg"
     },
+    "hoursHeading": "Studio Hours",
+    "hours": [
+      { "label": "Mon – Fri", "value": "05:00 – 22:00" },
+      { "label": "Saturday", "value": "06:00 – 20:00" },
+      { "label": "Sunday", "value": "07:00 – 18:00" }
+    ],
     "social": ["instagram", "facebook", "twitter", "youtube"],
+    "legalLinks": [
+      { "label": "Privacy Policy", "href": "#" },
+      { "label": "Terms of Service", "href": "#" }
+    ],
     "copyright": "© 2026 Forgewell. All rights reserved."
   }
 }

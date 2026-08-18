@@ -12,18 +12,8 @@ import {
   IconCheck,
 } from '../components/Icons'
 
-const benefits = [
-  'Certified coaches guiding every session',
-  'Personalized programming that adapts to you',
-  'Flexible plans — cancel or upgrade anytime',
-  'Free movement assessment on day one',
-  'Small group classes, never overcrowded',
-  'Nutrition guidance included with every plan',
-  'Modern equipment, sanitized after every use',
-  'Progress tracked and reviewed monthly',
-]
-
 export default function InquiryForm() {
+  const copy = data.inquiry
   const [searchParams] = useSearchParams()
   const preselectedPlan = searchParams.get('plan') || ''
 
@@ -72,7 +62,7 @@ export default function InquiryForm() {
           className="inline-flex items-center gap-2 text-sm text-ink-secondary hover:text-accent transition-colors duration-300 mb-5"
         >
           <IconArrowRight className="w-4 h-4 rotate-180" />
-          Back to Home
+          {copy.backLinkText}
         </Link>
 
         <div className="grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-border shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)]">
@@ -83,17 +73,17 @@ export default function InquiryForm() {
 
             <div className="relative">
               <span className="text-accent font-mono text-xs sm:text-sm tracking-[0.25em] uppercase">
-                Membership Inquiry
+                {copy.eyebrow}
               </span>
               <h1 className="mt-4 font-display text-4xl sm:text-5xl leading-[1.05] text-ink-primary">
-                JOIN <span className="text-accent">FORGEWELL</span>
+                {copy.headingMain} <span className="text-accent">{copy.headingAccent}</span>
               </h1>
               <p className="mt-5 text-ink-secondary leading-relaxed max-w-sm">
-                Fill out the form and a coach will reach out within 24 hours to confirm your membership and answer any questions.
+                {copy.description}
               </p>
 
               <ul className="mt-10 space-y-4">
-                {benefits.map((b) => (
+                {copy.benefits.map((b) => (
                   <li key={b} className="flex items-start gap-3">
                     <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center">
                       <IconCheck className="w-3 h-3 text-accent" />
@@ -105,18 +95,12 @@ export default function InquiryForm() {
             </div>
 
             <div className="relative mt-12 pt-8 border-t border-border grid grid-cols-3 gap-4">
-              <div>
-                <p className="font-display text-2xl sm:text-3xl text-accent">12+</p>
-                <p className="mt-1 text-xs text-ink-secondary">Years Coaching</p>
-              </div>
-              <div>
-                <p className="font-display text-2xl sm:text-3xl text-accent">2.4K</p>
-                <p className="mt-1 text-xs text-ink-secondary">Members Trained</p>
-              </div>
-              <div>
-                <p className="font-display text-2xl sm:text-3xl text-accent">18</p>
-                <p className="mt-1 text-xs text-ink-secondary">Trainers</p>
-              </div>
+              {copy.stats.map((stat) => (
+                <div key={stat.label}>
+                  <p className="font-display text-2xl sm:text-3xl text-accent">{stat.value}</p>
+                  <p className="mt-1 text-xs text-ink-secondary">{stat.label}</p>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -127,15 +111,15 @@ export default function InquiryForm() {
                 <div className="w-14 h-14 rounded-full bg-accent/15 flex items-center justify-center mb-5">
                   <IconCheck className="w-6 h-6 text-accent" />
                 </div>
-                <p className="text-ink-primary font-semibold text-lg">Thanks for your inquiry!</p>
+                <p className="text-ink-primary font-semibold text-lg">{copy.successTitle}</p>
                 <p className="mt-2 text-sm text-ink-secondary max-w-xs">
-                  A coach will contact you shortly to confirm your membership details.
+                  {copy.successMessage}
                 </p>
                 <Link
                   to="/"
                   className="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-accent-hover"
                 >
-                  Back to Home
+                  {copy.backLinkText}
                 </Link>
               </div>
             ) : (
@@ -147,7 +131,7 @@ export default function InquiryForm() {
                     type="text"
                     name="name"
                     required
-                    placeholder="Your Full Name"
+                    placeholder={copy.placeholders.name}
                     value={form.name}
                     onChange={handleChange}
                     className="w-full bg-bg-card border border-border pl-11 pr-4 py-3.5 rounded-xl text-sm text-ink-primary placeholder:text-ink-secondary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all"
@@ -162,7 +146,7 @@ export default function InquiryForm() {
                       type="email"
                       name="email"
                       required
-                      placeholder="Your Email Address"
+                      placeholder={copy.placeholders.email}
                       value={form.email}
                       onChange={handleChange}
                       className="w-full bg-bg-card border border-border pl-11 pr-4 py-3.5 rounded-xl text-sm text-ink-primary placeholder:text-ink-secondary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all"
@@ -174,7 +158,7 @@ export default function InquiryForm() {
                       type="tel"
                       name="phone"
                       required
-                      placeholder="Phone"
+                      placeholder={copy.placeholders.phone}
                       value={form.phone}
                       onChange={handleChange}
                       className="w-full bg-bg-card border border-border pl-11 pr-3 py-3.5 rounded-xl text-sm text-ink-primary placeholder:text-ink-secondary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all"
@@ -185,10 +169,10 @@ export default function InquiryForm() {
                 {/* Gender selection */}
                 <div>
                   <label className="block text-xs text-ink-secondary mb-2.5 uppercase tracking-wide">
-                    Gender
+                    {copy.labels.gender}
                   </label>
                   <div className="grid grid-cols-3 gap-3">
-                    {['Male', 'Female', 'Other'].map((g) => (
+                    {copy.genderOptions.map((g) => (
                       <label
                         key={g}
                         className={`flex items-center justify-center gap-2 py-3 rounded-xl border text-sm cursor-pointer transition-all duration-200 ${
@@ -215,7 +199,7 @@ export default function InquiryForm() {
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs text-ink-secondary mb-2.5 uppercase tracking-wide">
-                      Select Plan
+                      {copy.labels.plan}
                     </label>
                     <div className="relative">
                       <IconClipboardList className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-secondary pointer-events-none" />
@@ -227,7 +211,7 @@ export default function InquiryForm() {
                         className="w-full appearance-none bg-bg-card border border-border pl-11 pr-4 py-3.5 rounded-xl text-sm text-ink-primary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all"
                       >
                         <option value="" disabled>
-                          Choose a plan
+                          {copy.labels.planPlaceholder}
                         </option>
                         {plans.map((planName) => (
                           <option key={planName} value={planName}>
@@ -240,7 +224,7 @@ export default function InquiryForm() {
 
                   <div>
                     <label className="block text-xs text-ink-secondary mb-2.5 uppercase tracking-wide">
-                      Preferred Joining Date
+                      {copy.labels.joiningDate}
                     </label>
                     <div className="relative">
                       <IconCalendar className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-secondary pointer-events-none" />
@@ -259,7 +243,7 @@ export default function InquiryForm() {
                 {/* Services checkboxes */}
                 <div>
                   <label className="block text-xs text-ink-secondary mb-2.5 uppercase tracking-wide">
-                    Interested Services
+                    {copy.labels.services}
                   </label>
                   <div className="grid grid-cols-2 gap-3">
                     {services.map((service) => (
@@ -289,7 +273,7 @@ export default function InquiryForm() {
                   <textarea
                     name="message"
                     rows={3}
-                    placeholder="Anything else we should know? (optional)"
+                    placeholder={copy.placeholders.message}
                     value={form.message}
                     onChange={handleChange}
                     className="w-full bg-bg-card border border-border pl-11 pr-4 py-3.5 rounded-xl text-sm text-ink-primary placeholder:text-ink-secondary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition-all resize-none"
@@ -300,7 +284,7 @@ export default function InquiryForm() {
                   type="submit"
                   className="w-full rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-accent-hover hover:-translate-y-0.5 hover:shadow-[0_10px_26px_-10px_rgb(var(--shadow)/0.7)]"
                 >
-                  Submit Inquiry
+                  {copy.submitButtonText}
                 </button>
               </form>
             )}

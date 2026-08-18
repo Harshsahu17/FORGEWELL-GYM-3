@@ -1,6 +1,9 @@
 import data from '../data/gymData.json'
+import { serviceIconMap } from './Icons'
 
 function ServiceCard({ service }) {
+  const Icon = serviceIconMap[service.icon]
+
   return (
     <div className="group relative overflow-hidden rounded-3xl aspect-square cursor-pointer">
       <img
@@ -13,6 +16,13 @@ function ServiceCard({ service }) {
       {/* Extra darkening on hover */}
       <div className="absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
       <div className="absolute inset-0 ring-1 ring-inset ring-accent/0 rounded-3xl transition-all duration-500 group-hover:ring-accent/40" />
+
+      {Icon && (
+        <div className="absolute top-4 left-4 flex items-center justify-center w-11 h-11 rounded-full bg-black/40 backdrop-blur-sm text-accent ring-1 ring-white/10">
+          <Icon className="w-5 h-5" />
+        </div>
+      )}
+
       <div className="absolute bottom-0 left-0 right-0 p-4">
         <h3 className="font-display text-base text-white tracking-wide">{service.title}</h3>
         <p className="text-sm text-white/80">{service.description}</p>
