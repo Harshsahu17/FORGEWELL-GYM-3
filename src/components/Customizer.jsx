@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import defaultData from '../data/gymData.json'
 import {
   OPEN_EVENT,
@@ -173,6 +174,8 @@ function ArrayEditor({ items, onChange, renderItem, newItem, addLabel = 'Add ite
 }
 
 export default function Customizer() {
+  const navigate = useNavigate()
+  const location = useLocation()
   const [openKey, setOpenKey] = useState(null)
   const [hero, setHero] = useState(null)
   const [navbar, setNavbar] = useState(null)
@@ -187,7 +190,7 @@ export default function Customizer() {
   const [inquiry, setInquiry] = useState(null)
   const [saveError, setSaveError] = useState('')
 
-  useEffect(() => {
+    useEffect(() => {
     const onOpen = (e) => {
       const key = e.detail?.key
       if (!key) {
@@ -211,20 +214,31 @@ export default function Customizer() {
       } else if (key === 'inquiry') setInquiry(getSection('inquiry'))
       setSaveError('')
       setOpenKey(key)
+
       const sectionIds = { howItWorks: 'how-it-works', inquiry: 'inquiry' }
-      const target = document.getElementById(sectionIds[key] || key)
-      if (target) {
-        window.setTimeout(() => {
+      const targetId = sectionIds[key] || key
+
+      // Inquiry Form ek alag route (/inquiry) hai — agar wahan nahi hai to pehle navigate karo
+      const needsNavigation = key === 'inquiry' && location.pathname !== '/inquiry'
+      if (needsNavigation) {
+        navigate('/inquiry')
+      }
+
+      const scrollDelay = needsNavigation ? 150 : 0
+      window.setTimeout(() => {
+        const target = document.getElementById(targetId)
+        if (target) {
           window.scrollTo({
             top: target.getBoundingClientRect().top + window.scrollY - 120,
             behavior: 'smooth',
           })
-        }, 0)
-      }
+        }
+      }, scrollDelay)
     }
     window.addEventListener(OPEN_EVENT, onOpen)
     return () => window.removeEventListener(OPEN_EVENT, onOpen)
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname])
 
   useEffect(() => {
     document.body.classList.toggle('customizer-open', !!openKey)

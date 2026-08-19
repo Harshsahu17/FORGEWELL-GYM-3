@@ -56,7 +56,7 @@ export default function InquiryForm() {
   }
 
   return (
-    <div className="py-24 sm:py-24">
+    <div id="inquiry" className="py-24 sm:py-24">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <Link
           to="/"
