@@ -104,7 +104,7 @@ function Field({ label, children }) {
 }
 
 const inputCls =
-  'w-full bg-bg-card border border-border rounded-lg px-3 py-2.5 text-sm text-ink-primary placeholder:text-ink-secondary focus:border-accent focus:outline-none transition-colors'
+  'w-full bg-bg-card border border-border rounded-lg px-3 py-2.5 text-[10px] text-ink-primary placeholder:text-ink-secondary focus:border-accent focus:outline-none transition-colors'
 
 function TextInput(props) {
   return <input type="text" className={inputCls} {...props} />

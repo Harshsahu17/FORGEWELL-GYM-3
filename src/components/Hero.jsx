@@ -22,13 +22,16 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 w-full">
         <div className="max-w-3xl items-center flex flex-col text-center mx-auto">
           <span
-            className="inline-block opacity-0 animate-fade-down text-accent font-mono text-xs sm:text-sm tracking-[0.25em] uppercase"
+            className="inline-block opacity-0 animate-fade-down text-accent font-mono text-xs sm:text-sm tracking-[0.25em] uppercase break-words"
             style={{ animationDelay: '0.1s' }}
           >
             {hero.eyebrow}
           </span>
 
-          <h1 className="mt-5 font-display text-[13vw] sm:text-6xl md:text-7xl xl:text-8xl leading-[0.95] tracking-wide text-ink-primary">
+          {/* clamp() based fluid font-size: scales smoothly between screen sizes
+              instead of fixed vw/breakpoint jumps, so long headlines never
+              overflow the viewport on small screens. */}
+          <h1 className="mt-5 font-display text-[clamp(2.25rem,9vw,6rem)] leading-[0.95] tracking-wide text-ink-primary break-words [overflow-wrap:anywhere] max-w-full">
             <span className="block opacity-0 animate-fade-up" style={{ animationDelay: '0.25s' }}>
               {hero.headlineTop}
             </span>
@@ -38,7 +41,7 @@ export default function Hero() {
           </h1>
 
           <p
-            className="mt-6 max-w-xl text-base sm:text-lg text-ink-secondary opacity-0 animate-fade-up"
+            className="mt-6 max-w-xl text-base sm:text-lg text-ink-secondary opacity-0 animate-fade-up break-words"
             style={{ animationDelay: '0.55s' }}
           >
             {hero.description}
@@ -53,14 +56,14 @@ export default function Hero() {
               href="#membership"
               className="group inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-sm font-semibold uppercase tracking-wide text-white
                 transition-all duration-300 hover:bg-accent-hover hover:-translate-y-1
-                hover:shadow-[0_12px_30px_-10px_rgb(var(--shadow)/0.75)] w-full sm:w-auto justify-center"
+                hover:shadow-[0_12px_30px_-10px_rgb(var(--shadow)/0.75)] w-full sm:w-auto justify-center break-words"
             >
               {hero.primaryCta}
             </a>
             <a
               href="#services"
               className="inline-flex items-center gap-2 rounded-full border border-border px-8 py-4 text-sm font-semibold uppercase tracking-wide
-                text-ink-primary transition-all duration-300 hover:border-accent hover:text-accent w-full sm:w-auto justify-center"
+                text-ink-primary transition-all duration-300 hover:border-accent hover:text-accent w-full sm:w-auto justify-center break-words"
             >
               {hero.secondaryCta}
             </a>
