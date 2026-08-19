@@ -1,10 +1,12 @@
-import data from '../data/gymData.json'
+import defaultData from '../data/gymData.json'
+import useManagedSection from '../hooks/useManagedSection'
 
 export default function Hero() {
-  const hero = data.hero
+  const hero = useManagedSection('hero', defaultData.hero)
 
   return (
-    <section id="home" className="relative isolate min-h-screen flex items-center pt-20 pb-10">
+    <section id="home" className="relative isolate min-h-screen flex items-center pt-20 pb-2">
+
       {/* Background image with overlays */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <img
@@ -41,6 +43,7 @@ export default function Hero() {
           >
             {hero.description}
           </p>
+
 
           <div
             className="mt-9 flex flex-col sm:flex-row items-start sm:items-center gap-4 opacity-0 animate-fade-up"

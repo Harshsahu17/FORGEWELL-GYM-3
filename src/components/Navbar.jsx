@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import data from '../data/gymData.json'
+import defaultData from '../data/gymData.json'
+import useManagedSection from '../hooks/useManagedSection'
 import { IconMenu, IconClose } from './Icons'
 
 export default function Navbar() {
-  const navbar = data.navbar
+  const navbar = useManagedSection('navbar', defaultData.navbar)
   const [open, setOpen] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
@@ -34,10 +35,10 @@ export default function Navbar() {
 
   return (
     <header
-      className="fixed top-0 inset-x-0 z-50 bg-[#0d0d0d] border-b border-border py-4"
+      className="fixed top-10 inset-x-0 z-50 bg-[#0d0d0d] border-b border-border py-4"
     >
       <nav className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between">
-        {/* Logo */}
+        {/* Logo — edited from the Hero customizer panel */}
         <Link
           to="/"
           onClick={handleLogoClick}

@@ -1,8 +1,9 @@
-import data from '../data/gymData.json'
+import defaultData from '../data/gymData.json'
+import useManagedSection from '../hooks/useManagedSection'
 import { IconArrowRight, IconCheck } from './Icons'
 
 export default function About() {
-  const about = data.about
+  const about = useManagedSection('about', defaultData.about)
 
   return (
     <section id="about" className="relative bg-bg-secondary py-16 sm:py-16 overflow-visible">

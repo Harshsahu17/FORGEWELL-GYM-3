@@ -8,6 +8,45 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!--
+      Applies any saved theme colors to :root SYNCHRONOUSLY, before React
+      mounts and before first paint — otherwise the site would flash the
+      default palette for a frame on every load/refresh.
+
+      Keep STORAGE_KEY and the var-map below in sync with:
+        - src/utils/dataManager.js  (STORAGE_KEY)
+        - src/utils/theme.js        (THEME_VAR_MAP)
+    -->
+    <script>
+      (function () {
+        try {
+          var STORAGE_KEY = 'forgewell_overrides_v1'
+          var VAR_MAP = {
+            accent: '--accent',
+            accentHover: '--accent-hover',
+            bgPrimary: '--bg-primary',
+            bgSecondary: '--bg-secondary',
+            bgCard: '--bg-card',
+            inkPrimary: '--ink-primary',
+            inkSecondary: '--ink-secondary',
+            border: '--border',
+            shadow: '--shadow',
+          }
+          var raw = localStorage.getItem(STORAGE_KEY)
+          if (!raw) return
+          var overrides = JSON.parse(raw)
+          var theme = overrides && overrides.theme
+          if (!theme) return
+          var root = document.documentElement
+          for (var key in VAR_MAP) {
+            if (theme[key]) root.style.setProperty(VAR_MAP[key], theme[key])
+          }
+        } catch (e) {
+          // Corrupt/blocked storage — fall back to default theme silently.
+        }
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

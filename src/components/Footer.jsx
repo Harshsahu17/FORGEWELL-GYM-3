@@ -1,13 +1,13 @@
-import data from '../data/gymData.json'
+import defaultData from '../data/gymData.json'
+import useManagedSection from '../hooks/useManagedSection'
 import { IconMapPin, IconPhone, IconMail, socialIconMap } from './Icons'
 
 export default function Footer() {
-  const footer = data.footer
+  const footer = useManagedSection('footer', defaultData.footer)
 
   return (
-    <footer className="bg-bg-secondary border-t border-border pt-10 pb-4">
+    <footer className="relative bg-bg-secondary border-t border-border pt-10 pb-4">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
-
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="lg:col-span-1">
             <a href="#home" className="font-display text-2xl tracking-wide text-ink-primary">

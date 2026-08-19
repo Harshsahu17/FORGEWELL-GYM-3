@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
-import data from '../data/gymData.json'
+import defaultData from '../data/gymData.json'
+import useManagedSection from '../hooks/useManagedSection'
 import { IconCheck } from './Icons'
 
-function PlanCard({ plan, badgeLabel }) {
+function PlanCard({ plan, badgeLabel, billedText }) {
   return (
     <div
       className={`relative flex flex-col items-center text-center bg-bg-card border rounded-3xl p-8 transition-all duration-300 hover:-translate-y-1 ${
@@ -18,7 +19,7 @@ function PlanCard({ plan, badgeLabel }) {
       )}
 
       <p className="text-ink-secondary text-sm mb-6">
-        {data.membership.billedText || 'Billed per month'}
+        {billedText || 'Billed per month'}
       </p>
 
       <div className="flex items-start gap-1 mb-2">
@@ -66,10 +67,10 @@ function PlanCard({ plan, badgeLabel }) {
 }
 
 export default function Membership() {
-  const membership = data.membership
+  const membership = useManagedSection('membership', defaultData.membership)
 
   return (
-    <section id="membership" className="bg-bg-secondary py-16 sm:py-16">
+    <section id="membership" className="relative bg-bg-secondary py-16 sm:py-16">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-14">
           <span className="text-ink-secondary text-sm tracking-widest uppercase">
@@ -85,7 +86,7 @@ export default function Membership() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {membership.plans.map((plan) => (
-            <PlanCard key={plan.name} plan={plan} badgeLabel={membership.badgeLabel} />
+            <PlanCard key={plan.name} plan={plan} badgeLabel={membership.badgeLabel} billedText={membership.billedText} />
           ))}
         </div>
       </div>

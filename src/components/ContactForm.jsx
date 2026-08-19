@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import data from '../data/gymData.json'
+import useManagedSection from '../hooks/useManagedSection'
 
 export default function ContactForm() {
-  const contact = data.footer.contact
-  const copy = data.contactForm
+  const footer = useManagedSection('footer', data.footer)
+  const copy = useManagedSection('contactForm', data.contactForm)
+  const contact = footer.contact
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
 

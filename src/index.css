@@ -43,6 +43,25 @@ body {
   overflow-x: hidden;
 }
 
+body.customizer-open {
+  --customizer-width: 360px;
+  padding-right: var(--customizer-width);
+}
+
+body.customizer-open header {
+  right: var(--customizer-width);
+}
+
+@media (max-width: 639px) {
+  body.customizer-open {
+    padding-right: 0;
+  }
+
+  body.customizer-open header {
+    right: 0;
+  }
+}
+
 ::selection {
   background-color: #e84118;
   color: #0a0a0a;

@@ -1,4 +1,5 @@
-import data from '../data/gymData.json'
+import defaultData from '../data/gymData.json'
+import useManagedSection from '../hooks/useManagedSection'
 import { serviceIconMap } from './Icons'
 
 function ServiceCard({ service }) {
@@ -32,10 +33,10 @@ function ServiceCard({ service }) {
 }
 
 export default function Services() {
-  const services = data.services
+  const services = useManagedSection('services', defaultData.services)
 
   return (
-    <section id="services" className="bg-bg-primary py-16 sm:py-16">
+    <section id="services" className="relative bg-bg-primary py-16 sm:py-16">
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-14">
           <span className="text-ink-secondary text-sm tracking-widest uppercase">

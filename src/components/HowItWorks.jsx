@@ -1,6 +1,7 @@
-import data from '../data/gymData.json'
+import defaultData from '../data/gymData.json'
+import useManagedSection from '../hooks/useManagedSection'
 
-function Step({ step, isLast }) {
+function Step({ step }) {
   return (
     <div className="relative flex-1 ">
       <div className="flex items-center gap-4 lg:block">
@@ -17,10 +18,10 @@ function Step({ step, isLast }) {
 }
 
 export default function HowItWorks() {
-  const howItWorks = data.howItWorks
+  const howItWorks = useManagedSection('howItWorks', defaultData.howItWorks)
 
   return (
-    <section id="how-it-works" className="bg-bg-secondary py-16 sm:py-16">
+    <section id="how-it-works" className="relative bg-bg-secondary py-16 sm:py-16">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 flex flex-col items-center">
         <div className="max-w-2xl flex flex-col items-center">
           <span className="text-accent font-mono text-xs sm:text-sm tracking-[0.25em] uppercase">
@@ -35,8 +36,8 @@ export default function HowItWorks() {
         </div>
 
         <div className="mt-16 flex flex-col lg:flex-row gap-12 lg:gap-8">
-          {howItWorks.steps.map((step, i) => (
-            <Step key={step.number} step={step} isLast={i === howItWorks.steps.length - 1} />
+          {howItWorks.steps.map((step) => (
+            <Step key={step.number} step={step} />
           ))}
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import data from '../data/gymData.json'
+import useManagedSection from '../hooks/useManagedSection'
 import {
   IconArrowRight,
   IconUser,
@@ -13,7 +14,7 @@ import {
 } from '../components/Icons'
 
 export default function InquiryForm() {
-  const copy = data.inquiry
+  const copy = useManagedSection('inquiry', data.inquiry)
   const [searchParams] = useSearchParams()
   const preselectedPlan = searchParams.get('plan') || ''
 

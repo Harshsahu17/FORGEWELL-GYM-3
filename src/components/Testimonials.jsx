@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import data from '../data/gymData.json'
 import { IconStar } from './Icons'
+import useManagedSection from '../hooks/useManagedSection'
 
 export default function Testimonials() {
-  const testimonials = data.testimonials
+  const testimonials = useManagedSection('testimonials', data.testimonials)
   const [index, setIndex] = useState(0)
 
   const item = testimonials.items[index]
@@ -20,7 +21,7 @@ export default function Testimonials() {
   }, [index, total])
 
   return (
-    <section id="testimonials" className="bg-bg-primary py-16 sm:py-16">
+    <section id="testimonials" className="relative bg-bg-primary py-16 sm:py-16">
       <div className="max-w-3xl mx-auto px-5 sm:px-8">
         <div className="text-center mb-14">
           <span className="text-accent font-mono text-xs sm:text-sm tracking-[0.25em] uppercase">
