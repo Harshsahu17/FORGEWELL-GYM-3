@@ -181,75 +181,86 @@ export default function SectionToolbar() {
   return (
     <>
       <div className="fixed inset-x-0 top-0 z-[70] h-10 border-b border-border/60 bg-neutral-600 backdrop-blur-md shadow-[0_4px_20px_-8px_rgba(0,0,0,0.6)] print:hidden">
-        <div className="flex h-full items-center justify-between gap-3 px-5 sm:px-8">
-          {/* Left: mode indicator */}
-          <div className="hidden sm:flex items-center gap-2 min-w-0">
-            <img
-              src='/images/admin-logo.avif'
-              alt="Forgewell logo"
-              className="w-7 h-7 sm:w-7 sm:h-7  rounded-full object-cover flex-shrink-0"
-            />
-            <span className="text-[11px] ml-2 font-semibold uppercase tracking-[0.2em] text-white truncate">
-              Vendor Preview
-            </span>
-          </div>
+    <div className="flex h-full items-center justify-between gap-2 px-2 sm:gap-3 sm:px-4 md:px-6 lg:px-8">
 
-          {/* Right: actions */}
-          <div className="flex items-center gap-2 ml-auto">
-            {publishStatus.published && (
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-400">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
-                </span>
-                Live
-              </span>
-            )}
+    {/* Vendor Preview
+        Hidden only on mobile */}
+    {/* Left: Admin Logo + Vendor Preview */}
+    <div className="flex items-center gap-2 min-w-0 flex-shrink-0">
+      <img
+        src="/images/admin-logo.avif"
+        alt="Forgewell logo"
+        className="w-7 h-7 rounded-full object-cover flex-shrink-0"
+      />
 
-            {!formOpen && (
-              <button
-                type="button"
-                onClick={() => openCustomizer()}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white transition-all duration-200 hover:bg-accent hover:text-white hover:border-accent whitespace-nowrap"
-                aria-label="Customize website"
-              >
-                <IconEdit />
-                <span>Customize</span>
-              </button>
-            )}
+      {/* Hide only the text on mobile */}
+      <span className="hidden min-[600px]:block text-[11px] font-semibold uppercase tracking-[0.2em] text-white truncate">
+        Vendor Preview
+      </span>
+    </div>
 
-            <button
-              type="button"
-              onClick={handleResetClick}
-              className="inline-flex items-center gap-1.5 rounded-full border border-white px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white transition-all duration-200 hover:bg-accent hover:text-white hover:border-accent whitespace-nowrap"
-            >
-              <IconRefresh />
-              <span className="hidden xs:inline">Reset All</span>
-              <span className="xs:hidden">Reset</span>
-            </button>
+    {/* Actions */}
+    <div className="flex items-center gap-1.5 sm:gap-2 ml-auto">
 
-            {publishStatus.published ? (
-              <button
-                type="button"
-                onClick={() => setShowUnpublishConfirm(true)}
-                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-bg-card px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-primary transition-all duration-200 hover:border-red-400/50 hover:text-red-400 whitespace-nowrap"
-              >
-                <IconRocket />
-                <span>Unpublish</span>
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={() => setShowPublishConfirm(true)}
-                className="inline-flex items-center gap-1.5 rounded-full bg-emerald-600 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white transition-all duration-200 hover:bg-emerald-500 hover:shadow-[0_6px_18px_-6px_rgba(16,185,129,0.7)] whitespace-nowrap"
-              >
-                <IconRocket />
-                <span>Publish</span>
-              </button>
-            )}
-          </div>
-        </div>
-      </div>
+      {/* Live */}
+      {publishStatus.published && (
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 sm:px-2.5 py-1 text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.12em] sm:tracking-[0.16em] text-emerald-400 whitespace-nowrap">
+          <span className="relative flex h-1.5 w-1.5 flex-shrink-0">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
+          </span>
+
+          <span>Live</span>
+        </span>
+      )}
+
+      {/* Customize */}
+      {!formOpen && (
+        <button
+          type="button"
+          onClick={() => openCustomizer()}
+          className="inline-flex items-center gap-1.5 rounded-full border border-white px-2 sm:px-3 py-1.5 text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.12em] sm:tracking-[0.16em] text-white transition-all duration-200 hover:bg-accent hover:text-white hover:border-accent whitespace-nowrap"
+          aria-label="Customize website"
+        >
+          <IconEdit />
+          <span>Customize</span>
+        </button>
+      )}
+
+      {/* Reset */}
+      <button
+        type="button"
+        onClick={handleResetClick}
+        className="inline-flex items-center gap-1.5 rounded-full border border-white px-2 sm:px-3 py-1.5 text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.12em] sm:tracking-[0.16em] text-white transition-all duration-200 hover:bg-accent hover:text-white hover:border-accent whitespace-nowrap"
+      >
+        <IconRefresh />
+        <span>Reset All</span>
+      </button>
+
+      {/* Publish / Unpublish */}
+      {publishStatus.published ? (
+        <button
+          type="button"
+          onClick={() => setShowUnpublishConfirm(true)}
+          className="inline-flex items-center gap-1.5 rounded-full border border-border bg-bg-card px-2 sm:px-3 py-1.5 text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.12em] sm:tracking-[0.16em] text-ink-primary transition-all duration-200 hover:border-red-400/50 hover:text-red-400 whitespace-nowrap"
+        >
+          <IconRocket />
+          <span>Unpublish</span>
+        </button>
+      ) : (
+        <button
+          type="button"
+          onClick={() => setShowPublishConfirm(true)}
+          className="inline-flex items-center gap-1.5 rounded-full bg-emerald-600 px-2 sm:px-3 py-1.5 text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.12em] sm:tracking-[0.16em] text-white transition-all duration-200 hover:bg-emerald-500 hover:shadow-[0_6px_18px_-6px_rgba(16,185,129,0.7)] whitespace-nowrap"
+        >
+          <IconRocket />
+          <span>Publish</span>
+        </button>
+      )}
+
+    </div>
+  </div>
+</div>
 
       {showResetConfirm && (
         <ConfirmModal
