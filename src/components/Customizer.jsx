@@ -117,10 +117,24 @@ function TextArea(props) {
   return <textarea rows={3} className={`${inputCls} resize-none`} {...props} />
 }
 
+const MAX_UPLOAD_MB = 2
+
 function UploadField({ label, value, onChange }) {
+  const [error, setError] = useState('')
+
   const handleFile = async (event) => {
     const file = event.target.files?.[0]
     if (!file) return
+
+    // Reject oversized files before we even attempt to read/resize them
+    const sizeMB = file.size / (1024 * 1024)
+    if (sizeMB > MAX_UPLOAD_MB) {
+      setError(`Image is ${sizeMB.toFixed(1)}MB — please choose a file under ${MAX_UPLOAD_MB}MB.`)
+      event.target.value = '' // reset the input so re-selecting the same file re-fires onChange
+      return
+    }
+
+    setError('')
     const reader = new FileReader()
     reader.onload = () => {
       const image = new Image()
@@ -141,6 +155,7 @@ function UploadField({ label, value, onChange }) {
     <Field label={label}>
       <div className="space-y-2">
         <input type="file" accept="image/*" onChange={handleFile} className="w-full text-xs text-ink-secondary file:mr-3 file:rounded-lg file:border-0 file:bg-accent file:px-3 file:py-2 file:text-xs file:font-semibold file:text-white hover:file:bg-accent-hover" />
+        {error && <p className="text-xs text-red-300">{error}</p>}
         {value && <img src={value} alt="Selected preview" className="h-20 w-full rounded-lg object-cover border border-border" />}
       </div>
     </Field>
