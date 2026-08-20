@@ -20,7 +20,10 @@ const IconClose = () => (
 
 function Panel({ title, onClose, onBack, onReset, onSave, error, children }) {
   return (
-    <div className="fixed inset-0 z-[100] flex justify-end">
+    // top-10 keeps this panel below the fixed topbar (SectionToolbar, h-10 at
+    // top-0) instead of covering it — the topbar stays visible & clickable
+    // (Reset/Publish etc.) the whole time the panel is open.
+    <div className="fixed inset-x-0 top-10 bottom-0 z-[100] flex justify-end">
       <div className="absolute inset-y-0 left-0 right-0 sm:right-[var(--customizer-width)]" onClick={onClose} />
       <div className="relative w-full sm:w-[var(--customizer-width)] h-full bg-bg-secondary border-l border-border flex flex-col shadow-2xl">
         <div className="flex items-center justify-between px-5 py-4 border-b border-border">
@@ -68,7 +71,8 @@ const sectionOptions = [
 
 function SectionPicker({ onClose }) {
   return (
-    <div className="fixed inset-0 z-[100] flex justify-end">
+    // Same top-10 offset as Panel — see comment there.
+    <div className="fixed inset-x-0 top-10 bottom-0 z-[100] flex justify-end">
       <div className="absolute inset-y-0 left-0 right-0 sm:right-[var(--customizer-width)]" onClick={onClose} />
       <div className="relative w-full sm:w-[var(--customizer-width)] h-full overflow-y-auto bg-bg-secondary border-l border-border p-5 shadow-2xl">
         <div className="flex items-center justify-between border-b border-border pb-4">
