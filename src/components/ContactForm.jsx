@@ -67,6 +67,15 @@ export default function ContactForm() {
                       className="w-full bg-bg-card border border-border px-4 py-3 rounded-lg text-sm text-ink-primary placeholder:text-ink-secondary focus:border-accent focus:outline-none transition-colors"
                     />
                     <input
+                      type="tel"
+                      name="phone"
+                      placeholder={copy.placeholders.phone}
+                      value={form.phone}
+                      onChange={handleChange}
+                      className="w-full bg-bg-card border border-border px-4 py-3 rounded-lg text-sm text-ink-primary placeholder:text-ink-secondary focus:border-accent focus:outline-none transition-colors"
+                    />
+                  </div>
+                    <input
                       type="email"
                       name="email"
                       required
@@ -75,15 +84,6 @@ export default function ContactForm() {
                       onChange={handleChange}
                       className="w-full bg-bg-card border border-border px-4 py-3 rounded-lg text-sm text-ink-primary placeholder:text-ink-secondary focus:border-accent focus:outline-none transition-colors"
                     />
-                  </div>
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder={copy.placeholders.phone}
-                    value={form.phone}
-                    onChange={handleChange}
-                    className="w-full bg-bg-card border border-border px-4 py-3 rounded-lg text-sm text-ink-primary placeholder:text-ink-secondary focus:border-accent focus:outline-none transition-colors"
-                  />
                   <textarea
                     name="message"
                     required
